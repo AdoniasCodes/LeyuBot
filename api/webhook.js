@@ -1,12 +1,17 @@
 const { webhookCallback } = require("grammy");
 const bot = require("../lib/bot");
 
-module.exports = async (req, res) => {
+// Create the webhook handler once (avoid re-creating on every invocation)
+const handleUpdate = webhookCallback(bot, "http");
+
+module.exports = (req, res) => {
   try {
-    const handleUpdate = webhookCallback(bot, "http");
+    if (req.method !== "POST") {
+      return res.status(200).send("OK");
+    }
     return handleUpdate(req, res);
   } catch (e) {
     console.error(e);
-    res.status(500).send("Error");
+    return res.status(500).send("Error");
   }
 };
