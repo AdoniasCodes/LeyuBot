@@ -1,19 +1,17 @@
 {
   "name": "leyu-bus-bot",
   "version": "1.0.0",
-  "description": "Telegram bot for Leyu Bus ticketing service",
-  "main": "bot.js",
+  "description": "Optimized Leyu Bus Telegram Bot",
+  "main": "api/webhook.js",
   "scripts": {
-    "start": "node bot.js",
-    "dev": "nodemon bot.js",
-    "vercel-build": "echo 'Vercel build complete'"
+    "dev": "node dev.js",
+    "start": "node dev.js"
   },
   "dependencies": {
-    "dotenv": "^16.0.3",
-    "node-telegram-bot-api": "^0.64.0"
+    "grammy": "^1.33.0",
+    "dotenv": "^16.4.5"
   },
-  "devDependencies": {
-    "nodemon": "^3.0.1",
-    "@vercel/node": "^3.0.0"
+  "engines": {
+    "node": "18.x"
   }
 }
